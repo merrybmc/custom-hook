@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import useInput from './useInput';
 
 function App() {
+  const [inputValue, handleChange] = useInput('안녕');
+
+  const handleSubmit = () => {
+    alert(inputValue);
+    // setInputValue('');
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>useInput</h1>
+      <input value={inputValue} onChange={handleChange} />
+      <button onClick={handleSubmit}>확인</button>
     </div>
   );
 }
